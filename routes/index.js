@@ -4,17 +4,13 @@ const product = require('./../resources/products.json')
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
-let productosOb = new Map(Object.entries(product))
-let productos = new Map()
+let productos = new Map(Object.entries(product))
+
 
 const json_products = fs.readFileSync('resources/products.json', 'utf-8');
-let products = [JSON.parse(json_products)];
+let products = JSON.parse(json_products);
 
-productosOb.forEach((v,k)=>{
 
-    productos = new Map(Object.entries(v))
-
-})
 
 router.get('/', (req, res) => {
     // res.sendFile( path.join( __dirname, '../View/index.html'))    
@@ -38,7 +34,7 @@ router.post('/submit', (req, res) => {
     };
   
     products.push(data);
-    console.log(products);
+    
     
     const newData = JSON.stringify(products);
 
